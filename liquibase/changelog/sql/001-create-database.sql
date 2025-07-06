@@ -1,0 +1,3 @@
+-- Script para crear la base de datos myapp
+-- La base de datos myapp se crea automáticamente por el contenedor PostgreSQL
+-- No es necesario crear la base de datos aquí 

@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002
+      author: liquibase
+      comment: Grant privileges to application user
+      runAlways: false
+      runOnChange: false
+      changes:
+        - sql:
+            sql: GRANT CONNECT ON DATABASE myapp TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: GRANT USAGE ON SCHEMA public TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: GRANT CREATE ON SCHEMA public TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO appuser;
+            dbms: postgresql
+        - sql:
+            sql: ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO appuser;
+            dbms: postgresql 

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: liquibase-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:-admin123}
+      POSTGRES_DB: myapp
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./liquibase/changelog/sql/001-create-database.sql:/docker-entrypoint-initdb.d/001-create-database.sql
+      - ./liquibase/changelog/sql/002-init-myapp.sql:/docker-entrypoint-initdb.d/002-init-myapp.sql
+    networks:
+      - liquibase-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_ADMIN_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+
+networks:
+  liquibase-network:
+    driver: bridge 

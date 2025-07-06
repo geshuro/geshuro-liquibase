@@ -1,0 +1,81 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-001
+      author: liquibase
+      comment: Insert initial users
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "admin" }
+              - column: { name: email, value: "admin@example.com" }
+              - column: { name: password_hash, value: "adminpass" }
+              - column: { name: first_name, value: "Admin" }
+              - column: { name: last_name, value: "User" }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "johndoe" }
+              - column: { name: email, value: "john@example.com" }
+              - column: { name: password_hash, value: "johnpass" }
+              - column: { name: first_name, value: "John" }
+              - column: { name: last_name, value: "Doe" }
+              - column: { name: is_active, valueBoolean: true }
+
+  - changeSet:
+      id: 004-002
+      author: liquibase
+      comment: Insert initial categories
+      changes:
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: name, value: "Electronics" }
+              - column: { name: description, value: "Electronic items" }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: name, value: "Books" }
+              - column: { name: description, value: "Books and literature" }
+              - column: { name: is_active, valueBoolean: true }
+
+  - changeSet:
+      id: 004-003
+      author: liquibase
+      comment: Insert initial products
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: name, value: "Smartphone" }
+              - column: { name: description, value: "Latest model smartphone" }
+              - column: { name: price, valueNumeric: 699.99 }
+              - column: { name: category_id, valueNumeric: 1 }
+              - column: { name: stock_quantity, valueNumeric: 50 }
+              - column: { name: is_active, valueBoolean: true }
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: name, value: "Novel" }
+              - column: { name: description, value: "Bestselling novel" }
+              - column: { name: price, valueNumeric: 19.99 }
+              - column: { name: category_id, valueNumeric: 2 }
+              - column: { name: stock_quantity, valueNumeric: 100 }
+              - column: { name: is_active, valueBoolean: true } 
+
+  - changeSet:
+      id: 004-004
+      author: liquibase
+      comment: Insert initial products 2
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column: { name: name, value: "AgentIA" }
+              - column: { name: description, value: "Agent IA" }
+              - column: { name: price, valueNumeric: 24.00 }
+              - column: { name: category_id, valueNumeric: 1 }
+              - column: { name: stock_quantity, valueNumeric: 24 }
+              - column: { name: is_active, valueBoolean: true } 

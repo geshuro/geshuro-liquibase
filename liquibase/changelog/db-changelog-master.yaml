@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: changelog/changes/002-create-user.yaml
+  - include:
+      file: changelog/changes/003-create-tables.yaml
+  - include:
+      file: changelog/changes/004-insert-initial-data.yaml 
